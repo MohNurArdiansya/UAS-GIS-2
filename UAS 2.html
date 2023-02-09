@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <title>Program GoogleMaps</title>
+  <head>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>UAS GIS II</h3>
+    <h3>Moh.Nur Ardiansya (20200302006)</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var KosSaya = {
+          lat: -0.8866401326742734,
+          lng:  119.87581917574,
+        };
+        var waypoint1 = { lat: -0.8869768613962502, lng: 119.8757614506689 };
+        var waypoint2 = { lat: -0.8869168757644105, lng: 119.8753979647689 };
+        var waypoint3 = { lat: -0.8859818055108989, lng: 119.87557088524527 };
+        var waypoint4 = { lat: -0.8862146909538893, lng: 119.87666840092277 };
+        var waypoint5 = { lat: -0.886495212036249, lng: 119.87666487193346 };
+        var AyampedasPAPANDENG = { lat: -0.8864810977684566, lng: 119.8768060315061 };
+
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: KosSaya,
+        });
+        var marker1 = new google.maps.Marker({
+          position: KosSaya,
+          map: map
+        });
+        var marker2 = new google.maps.Marker({ position: AyampedasPAPANDENG, map: map });
+
+        var polyline = new google.maps.Polyline({
+          path: [
+            KosSaya,
+            waypoint1,
+            waypoint2,
+            waypoint3,
+            waypoint4,
+            waypoint5,
+            AyampedasPAPANDENG,
+          ],
+          strokeColor: "Blue",
+          strokeOpacity: 5,
+          strokeWeight: 3.5,
+        });
+
+        polyline.setMap(map);
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ11za6yBqjdRNi4QaewAHhbSO26Tom6s&callback=initMap"
+    ></script>
+  </body>
+</html>
